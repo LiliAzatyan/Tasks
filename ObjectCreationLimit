@@ -1,23 +1,22 @@
-class ObjectCreationLimit {
-    static #count = 0;
-    static #quantity = 3; 
-
-    constructor(name, surname) {
-        this.name = name;
-        this.surname = surname;
-        if (ObjectCreationLimit.#count >= ObjectCreationLimit.#quantity) {
-            throw new Error(">Your program has exceeded the specified maximum object creation limit!");
+class Multiton {
+    static #instances = {};
+    static #maxSize = 7;
+    constructor() { //stugum enq instancei sizy ancnum e maxSizin
+        if (Object.keys(Multiton.#instances).length >= Multiton.#maxSize) {
+          throw new Error(`>Could not be created because the quantity exceeds the maximum!`);
         }
-        ObjectCreationLimit.#count++;
+    }
+    static creatInstance(obj) {
+      if (!(obj in this.#instances) && Object.keys(this.#instances).length < this.#maxSize) {
+        this.#instances[obj] = new Multiton(); //stexcum enq ete chka
+      }
+      return this.#instances[obj]; //veradardznum enq ete ka
     }
 };
-        
-const obj0 = new ObjectCreationLimit("Lili", "Azatyan");
-console.log(obj0);
-//const obj1 = new ObjectCreationLimit();
-//const obj2 = new ObjectCreationLimit();
-//const obj3 = new ObjectCreationLimit();
-//const obj4 = new ObjectCreationLimit();
-//const obj5 = new ObjectCreationLimit();
-//const obj6 = new ObjectCreationLimit();
-//const obj7 = new ObjectCreationLimit();
+
+const obj0 = Multiton.creatInstance('instance0');
+//console.log(obj0);
+const obj1 = Multiton.creatInstance('instance1');
+const obj2 = Multiton.creatInstance('instance2');
+const obj3 = Multiton.creatInstance('instance3'); // throws an error
+
