@@ -1,0 +1,23 @@
+class ObjectCreationLimit {
+    static #count = 0;
+    static #quantity = 3; 
+
+    constructor(name, surname) {
+        this.name = name;
+        this.surname = surname;
+        if (ObjectCreationLimit.#count >= ObjectCreationLimit.#quantity) {
+            throw new Error(">Your program has exceeded the specified maximum object creation limit!");
+        }
+        ObjectCreationLimit.#count++;
+    }
+};
+        
+const obj0 = new ObjectCreationLimit("Lili", "Azatyan");
+console.log(obj0);
+//const obj1 = new ObjectCreationLimit();
+//const obj2 = new ObjectCreationLimit();
+//const obj3 = new ObjectCreationLimit();
+//const obj4 = new ObjectCreationLimit();
+//const obj5 = new ObjectCreationLimit();
+//const obj6 = new ObjectCreationLimit();
+//const obj7 = new ObjectCreationLimit();
