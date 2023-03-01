@@ -18,5 +18,5 @@ const obj0 = Multiton.creatInstance('instance0');
 //console.log(obj0);
 const obj1 = Multiton.creatInstance('instance1');
 const obj2 = Multiton.creatInstance('instance2');
-const obj3 = Multiton.creatInstance('instance3'); // throws an error
+const obj3 = Multiton.creatInstance('instance3'); 
 
