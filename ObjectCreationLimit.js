@@ -7,7 +7,7 @@ class Multiton {
         }
     }
     static creatInstance(instance) {
-      if (!(instance in this.#instances) && Object.keys(this.#instances).length < this.#maxSize) {
+      if (!(instance in this.#instances)) {
         this.#instances[instance] = new Multiton(); 
       }
       return this.#instances[instance]; 
