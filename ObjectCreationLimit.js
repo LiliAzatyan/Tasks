@@ -6,11 +6,11 @@ class Multiton {
           throw new Error(`>Could not be created because the quantity exceeds the maximum!`);
         }
     }
-    static creatInstance(instance) {
-      if (!(instance in this.#instances)) {
-        this.#instances[instance] = new Multiton(); 
+    static creatInstance(name) {
+      if (!(name in this.#instances)) {
+        this.#instances[name] = new Multiton(); 
       }
-      return this.#instances[instance]; 
+      return this.#instances[name]; 
     }
 };
 
